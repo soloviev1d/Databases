@@ -1,0 +1,1 @@
+SELECT town_to, timediff(time_in,time_out) as flight_time FROM trip where town_from='Paris';
