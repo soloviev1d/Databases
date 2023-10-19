@@ -32,7 +32,7 @@ CREATE TABLE `pass_in_trip` (
   KEY `passenger_idx_idx` (`passenger`),
   CONSTRAINT `passenger_idx` FOREIGN KEY (`passenger`) REFERENCES `passenger` (`id`),
   CONSTRAINT `trip_idx` FOREIGN KEY (`trip_idx`) REFERENCES `trip` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4; 
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

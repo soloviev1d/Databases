@@ -28,4 +28,13 @@
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+DROP PROCEDURE IF EXISTS flightsFrom;
+DELIMITER ;;
+CREATE DEFINER=`bonch`@`localhost` PROCEDURE `flightsFrom`(IN city_out VARCHAR(128) COLLATE utf8mb4_general_ci)
+BEGIN 
+    DROP TABLE IF EXISTS flights;
+    create temporary table flights as
+        select town_to as 'destination', timediff(time_in, time_out) as 'flight_time' from trip WHERE town_from=city_out ORDER BY flight_time DESC;
+END ;;
+DELIMITER ;
 -- Dump completed on 2023-10-12 22:47:32
