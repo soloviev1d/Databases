@@ -24,15 +24,15 @@
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `createTask`(IN tname VARCHAR(45), IN tdate DATETIME, OUT muchdays VARCHAR(45))
-BEGIN 
+CREATE DEFINER=`bonch`@`localhost` PROCEDURE `createTask`(IN tname VARCHAR(45), IN tdate INT, OUT muchdays VARCHAR(45)) BEGIN 
     DECLARE tmonth VARCHAR(45); 
+    DECLARE ymd_date DATETIME;
+    SET ymd_date  = DATE_ADD(now(), interval tdate day);
     SELECT CONCAT('Task month is: ', 
-                 (CASE MONTH(tdate) 
+                 (CASE MONTH(ymd_date) 
                         WHEN 1 THEN 'Jan' 
                         WHEN 2 THEN 'Feb' 
                         WHEN 3 THEN 'Mar' 
@@ -48,8 +48,8 @@ BEGIN
                         ELSE 'None' 
                         END 
                   )) INTO tmonth; 
-    INSERT INTO tasks (taskname, taskday, taskmonth) VALUES (tname, DAY(tdate), tmonth); 
-    SELECT CONCAT('Remains days: ', DATEDIFF(tdate, CURDATE())) INTO muchdays;    
+    INSERT INTO tasks (taskname, taskday, taskmonth) VALUES (tname, DAY(ymd_date), tmonth); 
+    SELECT CONCAT('Remains days: ', DATEDIFF(ymd_date, CURDATE())) INTO muchdays;    
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;

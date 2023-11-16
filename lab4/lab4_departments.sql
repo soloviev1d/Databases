@@ -25,8 +25,9 @@ DROP TABLE IF EXISTS `departments`;
 CREATE TABLE `departments` (
   `id` int NOT NULL,
   `name` varchar(45) NOT NULL,
+  `d_class` int NOT NULL, 
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +36,7 @@ CREATE TABLE `departments` (
 
 LOCK TABLES `departments` WRITE;
 /*!40000 ALTER TABLE `departments` DISABLE KEYS */;
-INSERT INTO `departments` VALUES (1,'dept1'),(2,'dept2');
+INSERT INTO `departments` VALUES (1,'dept1', 1),(2,'dept2', 1),(3, 'accounting', 2);
 /*!40000 ALTER TABLE `departments` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

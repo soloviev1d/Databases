@@ -27,7 +27,7 @@ CREATE TABLE `users` (
   `name` varchar(45) NOT NULL,
   `d_id` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Ivan',1),(2,'Arsenij',1),(3,'Bogdan',2),(4,'Sergey',2),(5,'Nikita',2);
+INSERT INTO `users` VALUES (1,'Ivan',1),(2,'Arsenij',1),(3,'Bogdan',2),(4,'Sergey',2),(5,'Nikita',3);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
